@@ -44,7 +44,7 @@ def print_content(path_to_doc: Path,
                         print(line.nodeValue)
 
 
-parser = argparse.ArgumentParser('Program to "cat" .docx and .odt files')
+parser = argparse.ArgumentParser(description='Program to "cat" .docx and .odt files')
 parser.add_argument('-t', '--text-only', action='store_true', help='print only text')
 parser.add_argument('-j', '--join-spans', action='store_true', help='join spans (odt only)')
 parser.add_argument('PATH', nargs='+', help='path to document file')
