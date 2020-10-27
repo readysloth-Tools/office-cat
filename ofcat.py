@@ -31,17 +31,19 @@ def print_content(path_to_doc: Path,
     if docx:
         for text in dom.getElementsByTagName('w:t'):
             for line in text.childNodes:
-                print(line.nodeValue)
+                if line.nodeValue:
+                    print(line.nodeValue)
     else:
         for text in dom.getElementsByTagName('text:p'):
             for span in text.childNodes:
                 if span.nodeValue:
                     print(span.nodeValue)
                 for line in span.childNodes:
-                    if join_spans:
-                        print(line.nodeValue, end=' ')
-                    else:
-                        print(line.nodeValue)
+                    if line.nodeValue:
+                        if join_spans:
+                            print(line.nodeValue, end=' ')
+                        else:
+                            print(line.nodeValue)
 
 
 parser = argparse.ArgumentParser(description='Program to "cat" .docx and .odt files')
